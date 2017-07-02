@@ -20,6 +20,10 @@ With the virtualenv activated:
     $ git clone git@github.com:cacarrara/thales.git
     $ cd thales
     $ pip install -e .[dev]
+    $ cp local.env .env
+
+Put your development database url in .env file or set DATABASE_URL in your
+local enviroment variables.
 
 ## Running
 
