@@ -1,6 +1,6 @@
 from slugify import slugify
 import sqlalchemy
-from sqlalchemy import engine_from_config, event
+from sqlalchemy import engine_from_config
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -35,14 +35,15 @@ class NamedModel(Model):
     name = sqlalchemy.Column(sqlalchemy.String(200), unique=True)
     slug = sqlalchemy.Column(sqlalchemy.String(256), unique=True)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.set_slug()
+
     def set_slug(self):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.name)
 
-
-@event.listens_for(NamedModel, 'before_insert')
-@event.listens_for(NamedModel, 'before_update')
-def set_named_model_slug(mapper, connection, target):
-    target.set_slug()
+    def __str__(self):
+        return self.name
 
 
 def get_engine(settings, prefix='sqlalchemy.'):
