@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thales - Library Management System</title>
+</head>
+<body>
+    <h1>Authors</h1>
+    <ul>
+    {% for author in authors %}
+        <li>{{ author }}</li>
+    {% else %}
+        <li>No author was found.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
