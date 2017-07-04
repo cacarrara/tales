@@ -1,6 +1,8 @@
 from prettyconf import config as pconf
 from pyramid.config import Configurator
 
+from thales import models # flake8: noqa
+
 
 def main(global_config, **settings):
     settings['sqlalchemy.url'] = pconf('DATABASE_URL')
