@@ -16,8 +16,15 @@ NAMING_CONVENTION = {
 }
 
 
+class Base:
+    def __json__(self, request):
+        json_exclude = getattr(self, '__json_exclude__', set())
+        return {key: str(value) for key, value in self.__dict__.items()
+                if not key.startswith('_') and key not in json_exclude}
+
+
 metadata = sqlalchemy.MetaData(naming_convention=NAMING_CONVENTION)
-ModelBase = declarative_base(metadata=metadata)
+ModelBase = declarative_base(cls=Base, metadata=metadata)
 
 
 class Model(ModelBase):
