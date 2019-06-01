@@ -1,12 +1,11 @@
-from sqlalchemy import Column, ForeignKey, orm
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, ForeignKey, String, orm
 
 from thales.db import NamedModel
 
 
 class Book(NamedModel):
     __tablename__ = 'books'
-    author_id = Column(UUID, ForeignKey('authors.id'))
+    author_id = Column(String, ForeignKey('authors.id'))
     author = orm.relationship('Author', backref='books')
 
 

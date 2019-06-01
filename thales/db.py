@@ -1,7 +1,8 @@
+import uuid
+
 from slugify import slugify
 import sqlalchemy
 from sqlalchemy import engine_from_config
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import zope.sqlalchemy
@@ -31,9 +32,9 @@ class Model(ModelBase):
     __abstract__ = True
 
     id = sqlalchemy.Column(
-        UUID(as_uuid=True),
+        sqlalchemy.String(36),
         primary_key=True,
-        server_default=sqlalchemy.text('gen_random_uuid()'),
+        default=str(uuid.uuid4()),
     )
 
 

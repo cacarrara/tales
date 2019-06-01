@@ -4,7 +4,6 @@ from setuptools import setup, find_packages
 install_requires = [
     'alembic',
     'prettyconf',
-    'psycopg2',
     'pyramid',
     'pyramid-jinja2',
     'pyramid-tm',
