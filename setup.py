@@ -2,15 +2,15 @@ from setuptools import setup, find_packages
 
 
 install_requires = [
-    'alembic==0.9.2',
-    'prettyconf==1.2.3',
-    'psycopg2==2.7.1',
-    'pyramid==1.9',
-    'pyramid-jinja2==2.7',
-    'pyramid-tm==2.1',
-    'python-slugify==1.2.4',
-    'SQLAlchemy==1.1.11',
-    'zope.sqlalchemy==0.7.7',
+    'alembic',
+    'prettyconf',
+    'psycopg2',
+    'pyramid',
+    'pyramid-jinja2',
+    'pyramid-tm',
+    'python-slugify',
+    'SQLAlchemy',
+    'zope.sqlalchemy',
 ]
 
 test_requires = [
